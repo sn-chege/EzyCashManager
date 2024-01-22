@@ -293,3 +293,4 @@ D:\GITs\EzyCashManager\AccountService\obj\Debug\net6.0\AccountService.pdb
 D:\GITs\EzyCashManager\AccountService\obj\Debug\net6.0\AccountService.genruntimeconfig.cache
 D:\GITs\EzyCashManager\AccountService\obj\Debug\net6.0\ref\AccountService.dll
 D:\GITs\EzyCashManager\AccountService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll
+D:\GITs\EzyCashManager\AccountService\obj\Debug\net6.0\AccountService.sourcelink.json

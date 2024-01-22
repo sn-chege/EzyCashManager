@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4ZHwyFFEa7OvSCTpS8CP0ahhB2kJf3eXC7WCpTDV2U7sT+BkGprbgS7jhYRUjfhVUZHNo48w5AQQOTZpO40RNA==",
+  "dgSpecHash": "mRa1ab1U/lDpoMT+xwoHi0oNhNj+oXvWkkXPquVxn8dKP1PAKGmyeATRBr/6XeAifnHvCI0PmD8Fl/Jyg+JN8Q==",
   "success": true,
   "projectFilePath": "D:\\GITs\\EzyCashManager\\AccountService\\AccountService.csproj",
   "expectedPackageFiles": [
@@ -112,6 +112,7 @@
     "C:\\Users\\stanl\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\stanl\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\stanl\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\stanl\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.5\\microsoft.visualstudio.azure.containers.tools.targets.1.19.5.nupkg.sha512",
     "C:\\Users\\stanl\\.nuget\\packages\\microsoft.visualstudio.debugger.contracts\\17.2.0\\microsoft.visualstudio.debugger.contracts.17.2.0.nupkg.sha512",
     "C:\\Users\\stanl\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\6.0.16\\microsoft.visualstudio.web.codegeneration.6.0.16.nupkg.sha512",
     "C:\\Users\\stanl\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\6.0.16\\microsoft.visualstudio.web.codegeneration.core.6.0.16.nupkg.sha512",

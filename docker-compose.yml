@@ -1,0 +1,31 @@
+version: '3.4'
+
+networks:
+  backend:
+
+services:
+  accountdb:
+    container_name: account-db
+    image: mysql:8.0.29-oracle
+    environment:
+     - MYSQL_ROOT_PASSWORD=J#!@67812OPg#
+    ports:
+     - 8001:3306
+    networks:
+     - backend
+    
+  accountservice:
+    image: ${DOCKER_REGISTRY-}accountservice
+    build:
+      context: .
+      dockerfile: AccountService/Dockerfile
+    environment:
+      - DB_HOST=accountdb
+      - DB_NAME=ezy_account
+      - DB_USER_PASSWORD=J#!@67812OPg#
+    networks:
+      - backend
+    ports: 
+      - 8002:80
+
+

@@ -1,6 +1,7 @@
 using AccountService;
 using TransactionService;
 using Microsoft.EntityFrameworkCore;
+using AccountService.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,15 +17,14 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 
-
 /* Database Context Dependency injection*/
-// var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
-// var dbName = Environment.GetEnvironmentVariable("DB_NAME");
-// var dbPassword = Environment.GetEnvironmentVariable("DB_ROOT_PASSWORD");
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbPassword = Environment.GetEnvironmentVariable("DB_USER_PASSWORD");
 
-var dbHost = "localhost";
-var dbName = "ezy_user_accounts";
-var dbPassword = "";
+//var dbHost = "localhost";
+//var dbName = "ezy_user_accounts";
+//var dbPassword = "";
 
 var connectionString = $"server={dbHost};port=3306;database={dbName};user=root;password={dbPassword}";
 
