@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "XxJ9Ope4YLefF9iu4SR8gWtdQ+U2UVY8/0+8YBwgVdU2qComo9SBU+bEUNsVqmTzz3Z2/ZFosWZyy+ywfXN76w==",
+  "success": true,
+  "projectFilePath": "D:\\GITs\\EzyCashManager\\ATMService\\ATMService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\stanl\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\stanl\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\stanl\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\stanl\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\stanl\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\stanl\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -2,6 +2,7 @@ version: '3.4'
 
 networks:
   backend:
+  frontend:
 
 services:
   accountdb:
@@ -10,7 +11,7 @@ services:
     environment:
      - MYSQL_ROOT_PASSWORD=J#!@67812OPg#
     ports:
-     - 8001:3306
+     - 18001:3306
     networks:
      - backend
     
@@ -25,7 +26,15 @@ services:
       - DB_USER_PASSWORD=J#!@67812OPg#
     networks:
       - backend
-    ports: 
-      - 8002:80
-
-
+  
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: APIGateway/Dockerfile
+    ports:
+      - 8001:80
+    networks:
+      - backend
+      - frontend
+    

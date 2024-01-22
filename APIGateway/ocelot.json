@@ -1,0 +1,93 @@
+{
+  "Routes": [
+    //Account Service
+    {
+      "UpstreamPathTemplate": "/api/account",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AccountService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account"
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/create",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AccountService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/create"
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{id}/fund",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AccountService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{id}/fund"
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{id}/withdraw",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AccountService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{id}/withdraw"
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{senderAccountId}/transferfunds",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AccountService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{senderAccountId}/transferfunds"
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{id}/getbalance",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AccountService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{id}/getbalance"
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{id}/gettransactionhistory",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AccountService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{id}/gettransactionhistory"
+    }
+    //
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl":"http://localhost:800"
+  }
+}
