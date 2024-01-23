@@ -16,8 +16,8 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
+//--------- Database Context Dependency injection ---------//
 
-/* Database Context Dependency injection*/
 var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbName = Environment.GetEnvironmentVariable("DB_NAME");
 var dbPassword = Environment.GetEnvironmentVariable("DB_USER_PASSWORD");
@@ -29,8 +29,8 @@ var dbPassword = Environment.GetEnvironmentVariable("DB_USER_PASSWORD");
 var connectionString = $"server={dbHost};port=3306;database={dbName};user=root;password={dbPassword}";
 
 builder.Services.AddDbContext<AccountDbContext>(o => o.UseMySQL(connectionString));
-//builder.Services.AddDbContext<TransactionDbContext>(o => o.UseMySQL(connectionString));
 
+//--------- ----------------------------------- ---------//
 
 var app = builder.Build();
 

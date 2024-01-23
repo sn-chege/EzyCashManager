@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "KhFR22RTLSgoZS3RtYmJkd/0joyqXcTDCqaCvXL4VvI=",
+  "Source": "ATMService",
+  "BasePath": "_content/ATMService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

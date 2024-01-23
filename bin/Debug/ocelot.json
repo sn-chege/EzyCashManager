@@ -1,5 +1,18 @@
 {
   "Routes": [
+    // Authentication Web API
+    {
+      "UpstreamPathTemplate": "/api/user/login",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AuthService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/user/generate-token"
+    }, 
     //Account Service
     {
       "UpstreamPathTemplate": "/api/account",
@@ -88,6 +101,6 @@
     //
   ],
   "GlobalConfiguration": {
-    "BaseUrl":"http://localhost:800"
+    "BaseUrl": "http://localhost:8001"
   }
 }

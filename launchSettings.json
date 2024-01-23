@@ -5,7 +5,9 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "accountservice": "StartDebugging",
-        "apigateway": "StartDebugging"
+        "apigateway": "StartDebugging",
+        "atmservice": "StartDebugging",
+        "authservice": "StartDebugging"
       }
     }
   }

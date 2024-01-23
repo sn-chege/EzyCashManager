@@ -1,0 +1,13 @@
+D:\GITs\EzyCashManager\JwtAuthenticationManager\bin\Debug\net6.0\JwtAuthenticationManager.deps.json
+D:\GITs\EzyCashManager\JwtAuthenticationManager\bin\Debug\net6.0\JwtAuthenticationManager.dll
+D:\GITs\EzyCashManager\JwtAuthenticationManager\bin\Debug\net6.0\JwtAuthenticationManager.pdb
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\JwtAuthenticationManager.csproj.AssemblyReference.cache
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\JwtAuthenticationManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\JwtAuthenticationManager.AssemblyInfoInputs.cache
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\JwtAuthenticationManager.AssemblyInfo.cs
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\JwtAuthenticationManager.csproj.CoreCompileInputs.cache
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\JwtAuthenticationManager.sourcelink.json
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\JwtAuthenticationManager.dll
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\refint\JwtAuthenticationManager.dll
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\JwtAuthenticationManager.pdb
+D:\GITs\EzyCashManager\JwtAuthenticationManager\obj\Debug\net6.0\ref\JwtAuthenticationManager.dll

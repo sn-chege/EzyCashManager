@@ -27,6 +27,28 @@ services:
     networks:
       - backend
   
+  atmdb:
+    container_name: atm-db
+    image: mysql:8.0.29-oracle
+    environment:
+     - MYSQL_ROOT_PASSWORD=J#!@67812OPg#
+    ports:
+     - 18002:3306
+    networks:
+     - backend
+
+  atmservice:
+    image: ${DOCKER_REGISTRY-}atmservice
+    build:
+      context: .
+      dockerfile: ATMService/Dockerfile
+    environment:
+      - DB_HOST=atmdb
+      - DB_NAME=ezy_atm
+      - DB_USER_PASSWORD=J#!@67812OPg#
+    networks:
+      - backend
+
   apigateway:
     image: ${DOCKER_REGISTRY-}apigateway
     build:
@@ -37,4 +59,13 @@ services:
     networks:
       - backend
       - frontend
-    
+
+  authservice:
+    image: ${DOCKER_REGISTRY-}authservice
+    build:
+      context: .
+      dockerfile: AuthService/Dockerfile
+    networks:
+     - backend
+
+
