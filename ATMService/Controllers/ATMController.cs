@@ -65,8 +65,6 @@ namespace ATMService.Controllers
             return Ok($"Withdrawn {withdrawRequest.Amount} from ATM {id}");
         }
 
-        // ------------------- To delete ---------- //
-
         // POST /atm/create
         [HttpPost("create")]
         public IActionResult CreateATM([FromBody] ATM newATM)
