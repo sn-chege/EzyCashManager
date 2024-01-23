@@ -294,3 +294,7 @@ D:\GITs\EzyCashManager\AccountService\obj\Debug\net6.0\AccountService.genruntime
 D:\GITs\EzyCashManager\AccountService\obj\Debug\net6.0\ref\AccountService.dll
 D:\GITs\EzyCashManager\AccountService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll
 D:\GITs\EzyCashManager\AccountService\obj\Debug\net6.0\AccountService.sourcelink.json
+D:\GITs\EzyCashManager\AccountService\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\GITs\EzyCashManager\AccountService\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\GITs\EzyCashManager\AccountService\bin\Debug\net6.0\JwtAuthenticationManager.dll
+D:\GITs\EzyCashManager\AccountService\bin\Debug\net6.0\JwtAuthenticationManager.pdb

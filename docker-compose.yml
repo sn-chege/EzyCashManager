@@ -1,4 +1,5 @@
 version: '3.4'
+name: ezy-cash-manager
 
 networks:
   backend:

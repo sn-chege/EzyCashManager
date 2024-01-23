@@ -22,7 +22,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "AccountService",
+          "Host": "accountservice",
           "Port": 80
         }
       ],
@@ -41,7 +41,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "AccountService",
+          "Host": "accountservice",
           "Port": 80
         }
       ],
@@ -60,7 +60,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "AccountService",
+          "Host": "accountservice",
           "Port": 80
         }
       ],
@@ -76,7 +76,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "AccountService",
+          "Host": "accountservice",
           "Port": 80
         }
       ],
@@ -92,7 +92,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "AccountService",
+          "Host": "accountservice",
           "Port": 80
         }
       ],
@@ -108,7 +108,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "AccountService",
+          "Host": "accountservice",
           "Port": 80
         }
       ],
@@ -124,7 +124,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "AccountService",
+          "Host": "accountservice",
           "Port": 80
         }
       ],

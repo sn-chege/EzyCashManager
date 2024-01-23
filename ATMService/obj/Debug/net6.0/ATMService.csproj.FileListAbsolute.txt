@@ -294,3 +294,7 @@ D:\GITs\EzyCashManager\ATMService\obj\Debug\net6.0\refint\ATMService.dll
 D:\GITs\EzyCashManager\ATMService\obj\Debug\net6.0\ATMService.pdb
 D:\GITs\EzyCashManager\ATMService\obj\Debug\net6.0\ATMService.genruntimeconfig.cache
 D:\GITs\EzyCashManager\ATMService\obj\Debug\net6.0\ref\ATMService.dll
+D:\GITs\EzyCashManager\ATMService\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\GITs\EzyCashManager\ATMService\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\GITs\EzyCashManager\ATMService\bin\Debug\net6.0\JwtAuthenticationManager.dll
+D:\GITs\EzyCashManager\ATMService\bin\Debug\net6.0\JwtAuthenticationManager.pdb
