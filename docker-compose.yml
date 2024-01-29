@@ -17,7 +17,7 @@ services:
      - backend
     
   accountservice:
-    image: ${DOCKER_REGISTRY-}accountservice
+    image: 254chege/accountservice
     build:
       context: .
       dockerfile: AccountService/Dockerfile
@@ -39,7 +39,7 @@ services:
      - backend
 
   atmservice:
-    image: ${DOCKER_REGISTRY-}atmservice
+    image: 254chege/atmservice
     build:
       context: .
       dockerfile: ATMService/Dockerfile
@@ -51,7 +51,7 @@ services:
       - backend
 
   apigateway:
-    image: ${DOCKER_REGISTRY-}apigateway
+    image: 254chege/apigateway
     build:
       context: .
       dockerfile: APIGateway/Dockerfile
@@ -62,7 +62,7 @@ services:
       - frontend
 
   authservice:
-    image: ${DOCKER_REGISTRY-}authservice
+    image: 254chege/authservice
     build:
       context: .
       dockerfile: AuthService/Dockerfile
