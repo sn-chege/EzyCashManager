@@ -20,7 +20,7 @@ import Login from "views/auth/login";
 import Register from "views/auth/register";
 import Accounts from "views/account/index";
 import DepositFunds from "views/funds/deposit";
-import WithdrawFunds from "views/funds/transfer";
+import WithdrawFunds from "views/funds/withdraw";
 import TransferFunds from "views/funds/transfer";
 import ATM from "views/atm/index";
 import Profile from "views/auth/profile";
@@ -39,6 +39,7 @@ var routes = [
     icon: "ni ni-tv-2 text-primary",
     component: <Login/>,
     layout: "/auth",
+    invisible: true,
   },
   {
     path: "/register",
@@ -46,6 +47,7 @@ var routes = [
     icon: "ni ni-tv-2 text-primary",
     component: <Register/>,
     layout: "/auth",
+    invisible: true,
   },
   {
     path: "/accounts",
@@ -77,7 +79,7 @@ var routes = [
   },
   {
     path: "/find-atm",
-    name: "Locate ATM",
+    name: "ATM Listing",
     icon: "ni ni-pin-3 text-pink",
     component: <ATM/>,
     layout: "/admin",
@@ -88,6 +90,7 @@ var routes = [
     icon: "ni ni-circle-08 text-red",
     component: <Profile/>,
     layout: "/admin",
+    invisible: true,
   },
 ];
 

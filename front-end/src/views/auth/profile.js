@@ -57,13 +57,13 @@ import {
                     </h6>
                     <div className="pl-lg-4">
                       <Row>
-                        <Col lg="6">
+                        <Col lg="4">
                           <FormGroup>
                             <label
                               className="form-control-label"
                               htmlFor="input-username"
                             >
-                              Username
+                              FULL NAME
                             </label>
                             <Input
                               className="form-control-alternative"
@@ -74,13 +74,30 @@ import {
                             />
                           </FormGroup>
                         </Col>
-                        <Col lg="6">
+                        <Col lg="4">
+                          <FormGroup>
+                            <label
+                              className="form-control-label"
+                              htmlFor="input-username"
+                            >
+                              PHONE NUMBER
+                            </label>
+                            <Input
+                              className="form-control-alternative"
+                              defaultValue="lucky.jesse"
+                              id="input-username"
+                              placeholder="Username"
+                              type="text"
+                            />
+                          </FormGroup>
+                        </Col>
+                        <Col lg="4">
                           <FormGroup>
                             <label
                               className="form-control-label"
                               htmlFor="input-email"
                             >
-                              Email address
+                              EMAIL 
                             </label>
                             <Input
                               className="form-control-alternative"
@@ -91,47 +108,12 @@ import {
                           </FormGroup>
                         </Col>
                       </Row>
-                      <Row>
-                        <Col lg="6">
-                          <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-first-name"
-                            >
-                              First name
-                            </label>
-                            <Input
-                              className="form-control-alternative"
-                              defaultValue="Lucky"
-                              id="input-first-name"
-                              placeholder="First name"
-                              type="text"
-                            />
-                          </FormGroup>
-                        </Col>
-                        <Col lg="6">
-                          <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-last-name"
-                            >
-                              Last name
-                            </label>
-                            <Input
-                              className="form-control-alternative"
-                              defaultValue="Jesse"
-                              id="input-last-name"
-                              placeholder="Last name"
-                              type="text"
-                            />
-                          </FormGroup>
-                        </Col>
-                      </Row>
+                      
                     </div>
                     <hr className="my-4" />
                     {/* Address */}
                     <h6 className="heading-small text-muted mb-4">
-                      Contact information
+                      Address information
                     </h6>
                     <div className="pl-lg-4">
                       <Row>
@@ -207,21 +189,7 @@ import {
                       </Row>
                     </div>
                     <hr className="my-4" />
-                    {/* Description */}
-                    <h6 className="heading-small text-muted mb-4">About me</h6>
-                    <div className="pl-lg-4">
-                      <FormGroup>
-                        <label>About Me</label>
-                        <Input
-                          className="form-control-alternative"
-                          placeholder="A few words about you ..."
-                          rows="4"
-                          defaultValue="A beautiful Dashboard for Bootstrap 4. It is Free and
-                          Open Source."
-                          type="textarea"
-                        />
-                      </FormGroup>
-                    </div>
+
                   </Form>
                 </CardBody>
               </Card>

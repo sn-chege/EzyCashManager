@@ -1,12 +1,12 @@
 // reactstrap components
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
+  // Card,
+  // CardHeader,
+  // CardBody,
+  // FormGroup,
+  // Form,
+  // Input,
   Container,
   Row,
   Col,
@@ -34,15 +34,27 @@ const Profile = () => {
             <Col lg="7" md="10">
               <h1 className="display-2 text-white">Hello Jesse</h1>
               <p className="text-white mt-0 mb-5">
-                This is your profile page. You can see the progress you've made
-                with your work and manage your projects or assigned tasks
+                Welcome to <b>EzyCash Manager!</b> Your gateway to seamless self-service banking. 
+                Enjoy the freedom to 
+                <a href=""> deposit</a>, 
+                <a href=""> withdraw</a> and 
+                <a href=""> transfer</a> funds with utmost convenience.
               </p>
               <Button
                 color="info"
                 href="#pablo"
                 onClick={(e) => e.preventDefault()}
               >
-                Edit profile
+                My accounts
+              </Button>
+
+              <Button
+                color="info"
+                type="button"
+                outline
+                onClick={(e) => e.preventDefault()}
+              >
+                Cash Machines
               </Button>
                 
             </Col>

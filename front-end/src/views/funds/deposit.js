@@ -23,15 +23,15 @@ import {
   Form,
   FormGroup,
   Input,
-  Button,
+  //Button,
   Card,
   CardHeader,
   CardBody,
-  NavItem,
-  NavLink,
-  Nav,
-  Progress,
-  Table,
+  //NavItem,
+  //NavLink,
+  //Nav,
+  //Progress,
+  //Table,
   Container,
   Row,
   Col,
@@ -70,13 +70,13 @@ const Index = (props) => {
                     </h6>
                     <div className="pl-lg-4">
                       <Row>
-                        <Col lg="6">
+                        <Col lg="4">
                           <FormGroup>
                             <label
                               className="form-control-label"
                               htmlFor="input-username"
                             >
-                              Username
+                              ACCOUNT
                             </label>
                             <Input
                               className="form-control-alternative"
@@ -87,13 +87,14 @@ const Index = (props) => {
                             />
                           </FormGroup>
                         </Col>
-                        <Col lg="6">
+                        
+                        <Col lg="4">
                           <FormGroup>
                             <label
                               className="form-control-label"
                               htmlFor="input-email"
                             >
-                              Email address
+                              AMOUNT 
                             </label>
                             <Input
                               className="form-control-alternative"
@@ -103,15 +104,13 @@ const Index = (props) => {
                             />
                           </FormGroup>
                         </Col>
-                      </Row>
-                      <Row>
-                        <Col lg="6">
+                        <Col lg="4">
                           <FormGroup>
                             <label
                               className="form-control-label"
                               htmlFor="input-first-name"
                             >
-                              First name
+                              CASH MACHINE (ATM)
                             </label>
                             <Input
                               className="form-control-alternative"
@@ -122,28 +121,12 @@ const Index = (props) => {
                             />
                           </FormGroup>
                         </Col>
-                        <Col lg="6">
-                          <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-last-name"
-                            >
-                              Last name
-                            </label>
-                            <Input
-                              className="form-control-alternative"
-                              defaultValue="Jesse"
-                              id="input-last-name"
-                              placeholder="Last name"
-                              type="text"
-                            />
-                          </FormGroup>
-                        </Col>
                       </Row>
+                     
                     </div>
                     <div className="pl-lg-4">
                       <FormGroup>
-                        <label>Transfer details</label>
+                        <label>NOTES</label>
                         <Input
                           className="form-control-alternative"
                           placeholder="A few words about you ..."

@@ -1,6 +1,5 @@
 {
   "Routes": [
-    
     // Authentication Service
     {
       "UpstreamPathTemplate": "/api/user/login",
@@ -12,9 +11,21 @@
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/user/generate-token"
+      "DownstreamPathTemplate": "/api/user/login"
     },
-    
+    {
+      "UpstreamPathTemplate": "/api/user/register",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AuthService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/user/register"
+    },
+
     //Account Service
     {
       "UpstreamPathTemplate": "/api/account",
@@ -134,7 +145,7 @@
         "AllowedScopes": []
       }
     },
-    
+
     // ATM Service
     {
       "UpstreamPathTemplate": "/api/atm",

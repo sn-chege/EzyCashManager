@@ -61,11 +61,25 @@ services:
       - backend
       - frontend
 
+  authdb:
+    container_name: auth-db
+    image: mysql:8.0.29-oracle
+    environment:
+     - MYSQL_ROOT_PASSWORD=J#!@67812OPg#
+    ports:
+     - 18003:3306
+    networks:
+     - backend
+
   authservice:
     image: 254chege/authservice
     build:
       context: .
       dockerfile: AuthService/Dockerfile
+    environment:
+      - DB_HOST=authdb
+      - DB_NAME=ezy_user
+      - DB_USER_PASSWORD=J#!@67812OPg#
     networks:
      - backend
 

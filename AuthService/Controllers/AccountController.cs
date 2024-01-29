@@ -1,6 +1,5 @@
-﻿using JwtAuthenticationManager;
+﻿using AuthService.Core.Interfaces;
 using JwtAuthenticationManager.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthService.Controllers
@@ -9,19 +8,28 @@ namespace AuthService.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly JwtTokenHandler _jwtTokenHandler;
+        private readonly IUserService _userService;
 
-        public AccountController(JwtTokenHandler jwtTokenHandler)
+        public AccountController(IUserService userService)
         {
-            _jwtTokenHandler = jwtTokenHandler;
+            _userService = userService;
         }
 
-        [HttpPost("generate-token")]
-        public ActionResult<AuthenticationResponse?> Authenticate([FromBody] AuthenticationRequest authenticationRequest)
+        [HttpPost("login")]
+        public async Task< ActionResult<LoginResponse?>> Authenticate([FromBody] LoginRequest authenticationRequest)
         {
-            var authenticationResponse = _jwtTokenHandler.GenerateJwtToken(authenticationRequest);
+            var authenticationResponse = await _userService.Login(authenticationRequest);
             if (authenticationResponse == null) return Unauthorized();
-            return authenticationResponse;
+            return Ok(authenticationResponse);
+        }
+
+        [HttpPost("register")]
+        public async Task<ActionResult<RegistrationResponse?>> Register([FromBody] RegistrationRequest registrationRequest)
+        {
+            var registrationResponse = await _userService.Register(registrationRequest);
+            if(registrationResponse == null) return Unauthorized();
+            return Ok(registrationResponse);
+
         }
     }
 }

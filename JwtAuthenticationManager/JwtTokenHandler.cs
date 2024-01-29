@@ -10,31 +10,15 @@ namespace JwtAuthenticationManager
     {
         public const string JWT_SECURITY_KEY = "yPkCqn4kSWLtaJwXvN2jGzpQRyTZ3gdXkt7FeBJP";
         private const int JWT_TOKEN_VALIDITY_MINS = 60;
-        private readonly List<UserAccount> _userAccountList;
 
-        public JwtTokenHandler()
+        public LoginResponse? GenerateJwtToken(UserAccount userAccount)
         {
-            _userAccountList = new List<UserAccount>
-            {
-                new UserAccount{ Name = "admin", Email ="admin@123", NationalId=10221123, Phonenumber="254743567234" , Password = "admin123", Role = "Administrator" },
-                new UserAccount{ Name = "user", Email ="user@123", NationalId=10221124, Phonenumber="254743567235" , Password = "user123", Role = "User" },
-            };
-        }
-
-        public AuthenticationResponse? GenerateJwtToken(AuthenticationRequest authenticationRequest)
-        {
-            if (string.IsNullOrWhiteSpace(authenticationRequest.Email) || string.IsNullOrWhiteSpace(authenticationRequest.Password))
-                return null;
-
-            var userAccount = _userAccountList.Where(x => x.Email == authenticationRequest.Email && x.Password == authenticationRequest.Password).FirstOrDefault();
-            if (userAccount == null) return null;
-
             var tokenExpiryTimeStamp = DateTime.Now.AddMinutes(JWT_TOKEN_VALIDITY_MINS);
             var tokenKey = Encoding.ASCII.GetBytes(JWT_SECURITY_KEY);
             
             var claimsIdentity = new ClaimsIdentity(new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Name, authenticationRequest.Email),
+                new Claim(JwtRegisteredClaimNames.Name, userAccount.Email),
                 new Claim("Role", userAccount.Role)
             });
 
@@ -53,7 +37,7 @@ namespace JwtAuthenticationManager
             var securityToken = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
             var token = jwtSecurityTokenHandler.WriteToken(securityToken);
 
-            return new AuthenticationResponse
+            return new LoginResponse
             {
                 Name = userAccount.Name,
                 Email = userAccount.Email,

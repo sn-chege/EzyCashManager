@@ -14,9 +14,6 @@ builder.Services.AddSwaggerGen(options =>
     options.EnableAnnotations();
 });
 
-
-
-
 //--------- Database Context Dependency injection ---------//
 
 var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
