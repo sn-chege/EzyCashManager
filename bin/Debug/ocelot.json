@@ -1,6 +1,5 @@
 {
   "Routes": [
-
     // Authentication Service
     {
       "UpstreamPathTemplate": "/api/user/login",
