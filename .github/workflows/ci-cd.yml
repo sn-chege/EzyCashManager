@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master  
+      - master
 
 jobs:
   build-and-push:
@@ -13,26 +13,31 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Set up Docker
+      uses: docker/setup-docker@v2
+      with:
+        dockerfile: Frontend/Dockerfile 
+
     - name: Build and push Docker images
       run: |
-        
-        echo "$DOCKER_PASSWORD" | docker login
+        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-        docker-compose build 254chege/ezy-accountservice ./AccountService
-        docker-compose push 254chege/ezy-accountservice
+        # Build and push accountservice image
+        docker build -t 254chege/ezy-accountservice:latest ./AccountService
+        docker push 254chege/ezy-accountservice:latest
 
-        docker-compose build 254chege/ezy-atmservice ./ATMService
-        docker-compose push 254chege/ezy-atmservice
+        # Build and push atmservice image
+        docker build -t 254chege/ezy-atmservice:latest ./ATMService
+        docker push 254chege/ezy-atmservice:latest
 
-        docker-compose build 254chege/ezy-apigateway ./APIGateway
-        docker-compose push 254chege/ezy-apigateway
+        # Build and push apigateway image
+        docker build -t 254chege/ezy-apigateway:latest ./APIGateway
+        docker push 254chege/ezy-apigateway:latest
 
-        docker-compose build 254chege/ezy-authservice ./AuthService
-        docker-compose push 254chege/ezy-authservice
+        # Build and push authservice image
+        docker build -t 254chege/ezy-authservice:latest ./AuthService
+        docker push 254chege/ezy-authservice:latest
 
-        docker-compose build 254chege/ezy-frontend ./Frontend
-        docker-compose push 254chege/ezy-frontend
-
-    # docker-compose build
-    # docker-compose push
-    
+        # Build and push frontend image
+        docker build -t 254chege/ezy-frontend:latest ./Frontend
+        docker push 254chege/ezy-frontend:latest
