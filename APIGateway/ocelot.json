@@ -3,7 +3,7 @@
     // Authentication Service
     {
       "UpstreamPathTemplate": "/api/user/login",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamHttpMethod": [ "OPTIONS", "POST" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -11,8 +11,15 @@
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/user/login"
+      "DownstreamPathTemplate": "/api/user/login",
+      "CorsOptions": {
+        "PolicyName": "AllowAuthService",
+        "AllowedOrigins": [ "*" ],
+        "AllowedHeaders": [ "*" ],
+        "AllowedMethods": [ "OPTIONS", "POST" ]
+      }
     },
+
     {
       "UpstreamPathTemplate": "/api/user/register",
       "UpstreamHttpMethod": [ "Post" ],
@@ -231,6 +238,261 @@
       }
     }
   ],
+  "CorsOptions": {
+    "PolicyName": "AllowAll",
+    "AllowedOrigins": [ "*" ],
+    "AllowedHeaders": [ "*" ],
+    "AllowedMethods": [ {
+  "Routes": [
+    // Authentication Service
+    {
+      "UpstreamPathTemplate": "/api/user/login",
+      "UpstreamHttpMethod": [ "OPTIONS", "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AuthService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/user/login",
+      "CorsOptions": {
+        "PolicyName": "AllowAuthService",
+        "AllowedOrigins": [ "*" ],
+        "AllowedHeaders": [ "*" ],
+        "AllowedMethods": [ "OPTIONS", "POST" ]
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/user/register",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "AuthService",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/user/register"
+    },
+
+    //Account Service
+    {
+      "UpstreamPathTemplate": "/api/account",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "accountservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Administrator"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/create",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "accountservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/create",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Administrator"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{id}/fund",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "accountservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{id}/fund",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{id}/withdraw",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "accountservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{id}/withdraw",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{senderAccountId}/transferfunds",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "accountservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{senderAccountId}/transferfunds",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{id}/getbalance",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "accountservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{id}/getbalance",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/account/{id}/gettransactionhistory",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "accountservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/account/{id}/gettransactionhistory",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+
+    // ATM Service
+    {
+      "UpstreamPathTemplate": "/api/atm",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "atmservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/atm",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/atm/{id}/balance",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "atmservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/atm/{id}/balance",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/atm/{id}/withdraw",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "atmservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/atm/{id}/withdraw",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/atm/create",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "atmservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/atm/create",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/atm/fund",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "atmservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/atm/fund",
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "Role": "Administrator"
+      }
+    }
+  ],
+  "CorsOptions": {
+    "PolicyName": "AllowAll",
+    "AllowedOrigins": [ "*" ],
+    "AllowedHeaders": [ "*" ],
+    "AllowedMethods": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+  },
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8001"
+  }
+} ]
+  },
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:8001"
   }

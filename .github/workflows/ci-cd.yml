@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build and push Docker images
+      run: |
+        VERSION=$(git describe --tags --abbrev=0)
+        echo "Building version $VERSION"
+        
+        echo "$DOCKER_PASSWORD" | docker login
+        
+        docker build -t $254chege/ezy-account-service:$VERSION ./AccountService
+        docker push $254chege/ezy-account-service:$VERSION
+
+        docker build -t $254chege/ezy-atm-service:$VERSION ./ATMService
+        docker push $254chege/ezy-atm-service:$VERSION
+
+        docker build -t $254chege/ezy-api-gateway:$VERSION ./APIGateway
+        docker push $254chege/ezy-api-gateway:$VERSION
+
+        docker build -t $254chege/ezy-auth-service:$VERSION ./AuthService
+        docker push $254chege/ezy-auth-service:$VERSION
+
+        docker build -t $254chege/ezy-frontend:$VERSION ./Frontend
+        docker push $254chege/ezy-frontend:$VERSION

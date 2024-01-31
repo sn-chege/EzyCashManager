@@ -19,6 +19,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
+import AuthProvider from 'react-auth-kit';
+import createStore from 'react-auth-kit/createStore'; 
+
+
 import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
@@ -28,12 +32,21 @@ import AuthLayout from "layouts/Auth.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+const store = createStore({
+  authName:'_auth',
+  authType:'cookie',
+  cookieDomain: window.location.hostname,
+  cookieSecure: window.location.protocol === 'http:',
+});
+
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/admin/*" element={<AdminLayout />} />
-      <Route path="/auth/*" element={<AuthLayout />} />
-      <Route path="*" element={<Navigate to="/admin/index" replace />} />
-    </Routes>
-  </BrowserRouter>
+  <AuthProvider store={store}>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/admin/*" element={<AdminLayout />} />
+          <Route path="/auth/*" element={<AuthLayout />} />
+          <Route path="*" element={<Navigate to="/admin/index" replace />} />
+        </Routes>
+    </BrowserRouter>
+  </AuthProvider>
 );
