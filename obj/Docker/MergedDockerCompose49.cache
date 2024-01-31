@@ -1,0 +1,132 @@
+name: dockercompose482297581987573652
+services:
+  accountdb:
+    container_name: account-db
+    environment:
+      MYSQL_ROOT_PASSWORD: J#!@67812OPg#
+    image: mysql:8.0.29-oracle
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 3306
+        published: "18001"
+        protocol: tcp
+  accountservice:
+    build:
+      context: D:\GITs\EzyCashManager
+      dockerfile: AccountService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: accountdb
+      DB_NAME: ezy_account
+      DB_USER_PASSWORD: J#!@67812OPg#
+    image: 254chege/accountservice
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+  apigateway:
+    build:
+      context: D:\GITs\EzyCashManager
+      dockerfile: APIGateway/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: 254chege/apigateway
+    networks:
+      backend: null
+      frontend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+      - mode: ingress
+        target: 80
+        published: "8001"
+        protocol: tcp
+  atmdb:
+    container_name: atm-db
+    environment:
+      MYSQL_ROOT_PASSWORD: J#!@67812OPg#
+    image: mysql:8.0.29-oracle
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 3306
+        published: "18002"
+        protocol: tcp
+  atmservice:
+    build:
+      context: D:\GITs\EzyCashManager
+      dockerfile: ATMService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: atmdb
+      DB_NAME: ezy_atm
+      DB_USER_PASSWORD: J#!@67812OPg#
+    image: 254chege/atmservice
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+  authdb:
+    container_name: auth-db
+    environment:
+      MYSQL_ROOT_PASSWORD: J#!@67812OPg#
+    image: mysql:8.0.29-oracle
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 3306
+        published: "18003"
+        protocol: tcp
+  authservice:
+    build:
+      context: D:\GITs\EzyCashManager
+      dockerfile: AuthService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DB_HOST: authdb
+      DB_NAME: ezy_user
+      DB_USER_PASSWORD: J#!@67812OPg#
+    image: 254chege/authservice
+    networks:
+      backend: null
+    ports:
+      - mode: ingress
+        target: 80
+        protocol: tcp
+  frontend:
+    build:
+      context: D:\GITs\EzyCashManager
+      dockerfile: Frontend/Dockerfile
+    command:
+      - sh
+      - -c
+      - npm start
+    image: 254chege/ezy-frontend
+    networks:
+      frontend: null
+    ports:
+      - mode: ingress
+        target: 3000
+        published: "3000"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: D:\GITs\EzyCashManager\Frontend
+        target: /app
+        bind:
+          create_host_path: true
+    working_dir: /app
+networks:
+  backend:
+    name: dockercompose482297581987573652_backend
+  frontend:
+    name: dockercompose482297581987573652_frontend

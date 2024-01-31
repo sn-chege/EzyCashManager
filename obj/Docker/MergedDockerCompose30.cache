@@ -21,7 +21,7 @@ services:
       DB_HOST: accountdb
       DB_NAME: ezy_account
       DB_USER_PASSWORD: J#!@67812OPg#
-    image: accountservice
+    image: 254chege/accountservice
     networks:
       backend: null
     ports:
@@ -34,7 +34,7 @@ services:
       dockerfile: APIGateway/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-    image: apigateway
+    image: 254chege/apigateway
     networks:
       backend: null
       frontend: null
@@ -67,7 +67,7 @@ services:
       DB_HOST: atmdb
       DB_NAME: ezy_atm
       DB_USER_PASSWORD: J#!@67812OPg#
-    image: atmservice
+    image: 254chege/atmservice
     networks:
       backend: null
     ports:
@@ -80,27 +80,12 @@ services:
       dockerfile: AuthService/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      DB_HOST: userdb
-      DB_NAME: ezy_users
-      DB_USER_PASSWORD: J#!@67812OPg#
-    image: authservice
+    image: 254chege/authservice
     networks:
       backend: null
     ports:
       - mode: ingress
         target: 80
-        protocol: tcp
-  userdb:
-    container_name: user-db
-    environment:
-      MYSQL_ROOT_PASSWORD: J#!@67812OPg#
-    image: mysql:8.0.29-oracle
-    networks:
-      backend: null
-    ports:
-      - mode: ingress
-        target: 3306
-        published: "18003"
         protocol: tcp
 networks:
   backend:

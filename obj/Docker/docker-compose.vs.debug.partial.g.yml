@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   accountservice:
-    image: accountservice:dev
+    image: 254chege/accountservice:dev
     container_name: "AccountService"
     build:
       args:
@@ -36,7 +36,7 @@ services:
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
   apigateway:
-    image: apigateway:dev
+    image: 254chege/apigateway:dev
     container_name: "APIGateway"
     build:
       args:
@@ -71,7 +71,7 @@ services:
     tty: true
 
   atmservice:
-    image: atmservice:dev
+    image: 254chege/atmservice:dev
     container_name: "ATMService"
     build:
       args:
@@ -106,7 +106,7 @@ services:
     tty: true
 
   authservice:
-    image: authservice:dev
+    image: 254chege/authservice:dev
     container_name: "AuthService"
     build:
       args:

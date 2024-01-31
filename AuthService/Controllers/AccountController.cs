@@ -1,6 +1,5 @@
-﻿using JwtAuthenticationManager;
+﻿using AuthService.Core.Interfaces;
 using JwtAuthenticationManager.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthService.Controllers
@@ -9,53 +8,28 @@ namespace AuthService.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly JwtTokenHandler _jwtTokenHandler;
-        private readonly UserAccountDbContext _dbContext;
+        private readonly IUserService _userService;
 
-        public AccountController(JwtTokenHandler jwtTokenHandler, UserAccountDbContext dbContext)
+        public AccountController(IUserService userService)
         {
-            _jwtTokenHandler = jwtTokenHandler;
-            _dbContext = dbContext;
+            _userService = userService;
         }
 
-        [HttpPost("generate-token")]
-        public ActionResult<AuthenticationResponse?> Authenticate([FromBody] AuthenticationRequest authenticationRequest)
+        [HttpPost("login")]
+        public async Task< ActionResult<LoginResponse?>> Authenticate([FromBody] LoginRequest authenticationRequest)
         {
-            var authenticationResponse = _jwtTokenHandler.GenerateJwtToken(authenticationRequest);
+            var authenticationResponse = await _userService.Login(authenticationRequest);
             if (authenticationResponse == null) return Unauthorized();
-            return authenticationResponse;
+            return Ok(authenticationResponse);
         }
 
         [HttpPost("register")]
-        public ActionResult<UserAccount> Register([FromBody] UserAccount userAccount)
+        public async Task<ActionResult<RegistrationResponse?>> Register([FromBody] RegistrationRequest registrationRequest)
         {
-            try
-            {
-                _dbContext.UserAccounts.Add(userAccount);
-                _dbContext.SaveChanges();
-                return CreatedAtAction(nameof(Register), userAccount);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Registration failed: {ex.Message}");
-            }
-        }
+            var registrationResponse = await _userService.Register(registrationRequest);
+            if(registrationResponse == null) return Unauthorized();
+            return Ok(registrationResponse);
 
-        [HttpGet]
-        public ActionResult<IEnumerable<UserAccount>> GetUsers()
-        {
-            try
-            {
-                // Retrieve all users from the database
-                var users = _dbContext.UserAccounts.ToList();
-
-                // You may choose to return the list of users or customize the response as needed
-                return Ok(users);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Failed to retrieve users: {ex.Message}");
-            }
         }
     }
 }

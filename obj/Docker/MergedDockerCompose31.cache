@@ -35,7 +35,7 @@ services:
       DB_USER_PASSWORD: J#!@67812OPg#
       DOTNET_USE_POLLING_FILE_WATCHER: "1"
       NUGET_FALLBACK_PACKAGES: ""
-    image: accountservice:dev
+    image: 254chege/accountservice:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages  "/app/bin/Debug/net6.0/AccountService.dll"'
       com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof dotnet); then kill $$PID; fi"
@@ -132,7 +132,7 @@ services:
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       DOTNET_USE_POLLING_FILE_WATCHER: "1"
       NUGET_FALLBACK_PACKAGES: ""
-    image: apigateway:dev
+    image: 254chege/apigateway:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages  "/app/bin/Debug/net6.0/APIGateway.dll"'
       com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof dotnet); then kill $$PID; fi"
@@ -249,7 +249,7 @@ services:
       DB_USER_PASSWORD: J#!@67812OPg#
       DOTNET_USE_POLLING_FILE_WATCHER: "1"
       NUGET_FALLBACK_PACKAGES: ""
-    image: atmservice:dev
+    image: 254chege/atmservice:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages  "/app/bin/Debug/net6.0/ATMService.dll"'
       com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof dotnet); then kill $$PID; fi"
@@ -344,12 +344,9 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
-      DB_HOST: userdb
-      DB_NAME: ezy_users
-      DB_USER_PASSWORD: J#!@67812OPg#
       DOTNET_USE_POLLING_FILE_WATCHER: "1"
       NUGET_FALLBACK_PACKAGES: ""
-    image: authservice:dev
+    image: 254chege/authservice:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /.nuget/packages  "/app/bin/Debug/net6.0/AuthService.dll"'
       com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof dotnet); then kill $$PID; fi"
@@ -426,18 +423,6 @@ services:
         read_only: true
         bind:
           create_host_path: true
-  userdb:
-    container_name: user-db
-    environment:
-      MYSQL_ROOT_PASSWORD: J#!@67812OPg#
-    image: mysql:8.0.29-oracle
-    networks:
-      backend: null
-    ports:
-      - mode: ingress
-        target: 3306
-        published: "18003"
-        protocol: tcp
 networks:
   backend:
     name: dockercompose482297581987573652_backend

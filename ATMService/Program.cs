@@ -4,6 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder.WithOrigins("*")
+            .WithHeaders("*")
+            .WithMethods("*")
+            .WithExposedHeaders("*"));
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -13,9 +22,6 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.EnableAnnotations();
 });
-
-
-
 
 //--------- Database Context Dependency injection ---------//
 
@@ -29,6 +35,9 @@ builder.Services.AddDbContext<ATMDbContext>(o => o.UseMySQL(connectionString));
 //--------- ----------------------------------- ---------//
 
 var app = builder.Build();
+
+app.UseCors("CorsPolicy");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -1,13 +1,25 @@
 using AuthService;
+using AuthService.Core.Interfaces;
+using AuthService.Core.Services;
 using JwtAuthenticationManager;
 using Microsoft.EntityFrameworkCore;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder.WithOrigins("*")
+            .WithHeaders("*")
+            .WithMethods("*")
+            .WithExposedHeaders("*"));
+});
+
+
+// Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddSingleton<JwtTokenHandler>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -22,6 +34,8 @@ builder.Services.AddDbContext<UserAccountDbContext>(o => o.UseMySQL(connectionSt
 
 //--------- ----------------------------------- ---------//
 var app = builder.Build();
+app.UseCors("CorsPolicy");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
