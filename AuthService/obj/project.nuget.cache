@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ORgqQ1mZR/AOOx6qTR4eKn7nDpVY39Vml9mdxgmhgLyO3yzboGaNP2p4WYyPpz+dSBXa5PXj8fxJdrwIp/qrCA==",
+  "dgSpecHash": "+MibgZuzN0THZhIAwxAG4WQbwxdENExexKyN+lM0GkMniEEtQ+3m+dnmRDbQgwpOGW+SOd7/x6xQM/eaYsG2gw==",
   "success": true,
   "projectFilePath": "D:\\GITs\\EzyCashManager\\AuthService\\AuthService.csproj",
   "expectedPackageFiles": [
@@ -245,5 +245,12 @@
     "C:\\Users\\stanl\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\stanl\\.nuget\\packages\\zstdsharp.port\\0.7.1\\zstdsharp.port.0.7.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\GITs\\EzyCashManager\\AuthService\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
