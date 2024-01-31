@@ -13,14 +13,14 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Build and Push Docker Images to Docker hub
+    - name: Build and Push Docker Images to Docker Hub
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        docker build
+        docker build -t $DOCKER_USERNAME/ezy-cash-manager .
         echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-        docker push 
+        docker push $DOCKER_USERNAME/ezy-cash-manager
 
   deploy:
     needs: build
