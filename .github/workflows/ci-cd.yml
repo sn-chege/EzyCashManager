@@ -18,16 +18,28 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        docker build 
-        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-        docker push 
+        docker build -t $DOCKER_USERNAME/ezy-accountservice -f ./AccountService/Dockerfile .
+        docker build -t $DOCKER_USERNAME/ezy-atmservice -f ./ATMService/Dockerfile .
+        docker build -t $DOCKER_USERNAME/ezy-apigateway -f ./APIGateway/Dockerfile .
+        docker build -t $DOCKER_USERNAME/ezy-authservice -f ./AuthService/Dockerfile .
+        docker build -t $DOCKER_USERNAME/ezy-frontend -f ./Frontend/Dockerfile .
 
+        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
+        docker push $DOCKER_USERNAME/ezy-accountservice
+        docker push $DOCKER_USERNAME/ezy-atmservice
+        docker push $DOCKER_USERNAME/ezy-apigateway
+        docker push $DOCKER_USERNAME/ezy-authservice
+        docker push $DOCKER_USERNAME/ezy-frontend
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-  
+
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
     - name: SSH into EC2
       uses: appleboy/ssh-action@v0.4.0
       with:
@@ -37,7 +49,5 @@ jobs:
         script: |
           cd /var/www/EzyCashManager
           git pull origin master
-          cd /var/www/docker
           docker-compose pull
           docker-compose up -d
-        
