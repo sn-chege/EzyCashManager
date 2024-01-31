@@ -20,17 +20,17 @@ jobs:
         
         echo "$DOCKER_PASSWORD" | docker login
         
-        docker build -t $254chege/ezy-account-service:$VERSION ./AccountService
-        docker push $254chege/ezy-account-service:$VERSION
+        docker-compose build -t 254chege/ezy-account-service:$VERSION ./AccountService
+        docker-compose push 254chege/ezy-account-service:$VERSION
 
-        docker build -t $254chege/ezy-atm-service:$VERSION ./ATMService
-        docker push $254chege/ezy-atm-service:$VERSION
+        docker-compose build -t 254chege/ezy-atm-service:$VERSION ./ATMService
+        docker-compose push 254chege/ezy-atm-service:$VERSION
 
-        docker build -t $254chege/ezy-api-gateway:$VERSION ./APIGateway
-        docker push $254chege/ezy-api-gateway:$VERSION
+        docker-compose build -t 254chege/ezy-api-gateway:$VERSION ./APIGateway
+        docker-compose push 254chege/ezy-api-gateway:$VERSION
 
-        docker build -t $254chege/ezy-auth-service:$VERSION ./AuthService
-        docker push $254chege/ezy-auth-service:$VERSION
+        docker-compose build -t 254chege/ezy-auth-service:$VERSION ./AuthService
+        docker-compose push 254chege/ezy-auth-service:$VERSION
 
-        docker build -t $254chege/ezy-frontend:$VERSION ./Frontend
-        docker push $254chege/ezy-frontend:$VERSION
+        docker-compose build -t 254chege/ezy-frontend:$VERSION ./Frontend
+        docker-compose push 254chege/ezy-frontend:$VERSION

@@ -17,7 +17,7 @@ services:
      - backend
     
   accountservice:
-    image: 254chege/accountservice
+    image: 254chege/ezy-accountservice
     build:
       context: .
       dockerfile: AccountService/Dockerfile
@@ -39,7 +39,7 @@ services:
      - backend
 
   atmservice:
-    image: 254chege/atmservice
+    image: 254chege/ezy-atmservice
     build:
       context: .
       dockerfile: ATMService/Dockerfile
@@ -51,7 +51,7 @@ services:
       - backend
 
   apigateway:
-    image: 254chege/apigateway
+    image: 254chege/ezy-apigateway
     build:
       context: .
       dockerfile: APIGateway/Dockerfile
@@ -72,7 +72,7 @@ services:
      - backend
 
   authservice:
-    image: 254chege/authservice
+    image: 254chege/ezy-authservice
     build:
       context: .
       dockerfile: AuthService/Dockerfile
