@@ -1,3 +1,4 @@
+version: '3.3'
 name: ezy-cash-manager
 
 networks:
