@@ -15,12 +15,6 @@ jobs:
 
     - name: Build and push Docker images
       run: |
-
-        # ezy-accountservice
-        # ezy-atmservice
-        # ezy-apigateway
-        # ezy-authservice
-        # ezy-frontend
         
         echo "$DOCKER_PASSWORD" | docker login
         
