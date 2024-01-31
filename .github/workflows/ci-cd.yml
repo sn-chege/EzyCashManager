@@ -22,22 +22,6 @@ jobs:
       run: |
         echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-        # Build and push accountservice image
-        docker build -t 254chege/ezy-accountservice:latest ./AccountService
-        docker push 254chege/ezy-accountservice:latest
+        docker-compose build
 
-        # Build and push atmservice image
-        docker build -t 254chege/ezy-atmservice:latest ./ATMService
-        docker push 254chege/ezy-atmservice:latest
-
-        # Build and push apigateway image
-        docker build -t 254chege/ezy-apigateway:latest ./APIGateway
-        docker push 254chege/ezy-apigateway:latest
-
-        # Build and push authservice image
-        docker build -t 254chege/ezy-authservice:latest ./AuthService
-        docker push 254chege/ezy-authservice:latest
-
-        # Build and push frontend image
-        docker build -t 254chege/ezy-frontend:latest ./Frontend
-        docker push 254chege/ezy-frontend:latest
+        docker-compose push
