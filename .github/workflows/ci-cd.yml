@@ -15,22 +15,26 @@ jobs:
 
     - name: Build and push Docker images
       run: |
-        VERSION=$(date +'%Y%m%d%H%M%S')
-        echo "Using default version $VERSION"
+
+        # ezy-accountservice
+        # ezy-atmservice
+        # ezy-apigateway
+        # ezy-authservice
+        # ezy-frontend
         
         echo "$DOCKER_PASSWORD" | docker login
         
-        docker-compose build -t 254chege/ezy-account-service:$VERSION ./AccountService
-        docker-compose push 254chege/ezy-account-service:$VERSION
+        docker-compose build 254chege/ezy-accountservice ./AccountService
+        docker-compose push 254chege/ezy-accountservice
 
-        docker-compose build -t 254chege/ezy-atm-service:$VERSION ./ATMService
-        docker-compose push 254chege/ezy-atm-service:$VERSION
+        docker-compose build 254chege/ezy-atmservice ./ATMService
+        docker-compose push 254chege/ezy-atmservice
 
-        docker-compose build -t 254chege/ezy-api-gateway:$VERSION ./APIGateway
-        docker-compose push 254chege/ezy-api-gateway:$VERSION
+        docker-compose build 254chege/ezy-apigateway ./APIGateway
+        docker-compose push 254chege/ezy-apigateway
 
-        docker-compose build -t 254chege/ezy-auth-service:$VERSION ./AuthService
-        docker-compose push 254chege/ezy-auth-service:$VERSION
+        docker-compose build 254chege/ezy-authservice ./AuthService
+        docker-compose push 254chege/ezy-authservice
 
-        docker-compose build -t 254chege/ezy-frontend:$VERSION ./Frontend
-        docker-compose push 254chege/ezy-frontend:$VERSION
+        docker-compose build 254chege/ezy-frontend ./Frontend
+        docker-compose push 254chege/ezy-frontend
