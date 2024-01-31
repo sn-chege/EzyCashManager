@@ -30,7 +30,7 @@ var dbName = Environment.GetEnvironmentVariable("DB_NAME");
 var dbPassword = Environment.GetEnvironmentVariable("DB_USER_PASSWORD");
 var connectionString = $"server={dbHost};port=3306;database={dbName};user=root;password={dbPassword}";
 
-builder.Services.AddDbContext<UserAccountDbContext>(o => o.UseMySQL(connectionString));
+builder.Services.AddDbContext<AuthService.UserAccountDbContext>(o => o.UseMySQL(connectionString));
 
 //--------- ----------------------------------- ---------//
 var app = builder.Build();
