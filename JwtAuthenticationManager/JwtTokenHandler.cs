@@ -1,6 +1,9 @@
 ﻿using JwtAuthenticationManager.Models;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -10,15 +13,11 @@ namespace JwtAuthenticationManager
     {
         public const string JWT_SECURITY_KEY = "yPkCqn4kSWLtaJwXvN2jGzpQRyTZ3gdXkt7FeBJP";
         private const int JWT_TOKEN_VALIDITY_MINS = 60;
-        private readonly List<UserAccount> _userAccountList;
+        private readonly UserAccountDbContext _dbContext;
 
-        public JwtTokenHandler()
+        public JwtTokenHandler(UserAccountDbContext dbContext)
         {
-            _userAccountList = new List<UserAccount>
-            {
-                new UserAccount{ Name = "admin", Email ="admin@123", NationalId=10221123, Phonenumber="254743567234" , Password = "admin123", Role = "Administrator" },
-                new UserAccount{ Name = "user", Email ="user@123", NationalId=10221124, Phonenumber="254743567235" , Password = "user123", Role = "User" },
-            };
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
 
         public AuthenticationResponse? GenerateJwtToken(AuthenticationRequest authenticationRequest)
@@ -26,12 +25,16 @@ namespace JwtAuthenticationManager
             if (string.IsNullOrWhiteSpace(authenticationRequest.Email) || string.IsNullOrWhiteSpace(authenticationRequest.Password))
                 return null;
 
-            var userAccount = _userAccountList.Where(x => x.Email == authenticationRequest.Email && x.Password == authenticationRequest.Password).FirstOrDefault();
-            if (userAccount == null) return null;
+            // Retrieve user account from the database based on the provided email
+            var userAccount = _dbContext.UserAccounts
+                .FirstOrDefault(x => x.Email == authenticationRequest.Email && x.Password == authenticationRequest.Password);
+
+            if (userAccount == null)
+                return null;
 
             var tokenExpiryTimeStamp = DateTime.Now.AddMinutes(JWT_TOKEN_VALIDITY_MINS);
             var tokenKey = Encoding.ASCII.GetBytes(JWT_SECURITY_KEY);
-            
+
             var claimsIdentity = new ClaimsIdentity(new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Name, authenticationRequest.Email),
