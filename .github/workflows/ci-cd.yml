@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master
+      - master  
 
 jobs:
   build-and-push:
@@ -15,8 +15,8 @@ jobs:
 
     - name: Build and push Docker images
       run: |
-        VERSION=$(git describe --tags --abbrev=0)
-        echo "Building version $VERSION"
+        VERSION=$(date +'%Y%m%d%H%M%S')
+        echo "Using default version $VERSION"
         
         echo "$DOCKER_PASSWORD" | docker login
         
