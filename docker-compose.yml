@@ -83,16 +83,16 @@ services:
     networks:
      - backend
 
-  frontend:
-    image: 254chege/ezy-frontend
-    build:
-      context: .
-      dockerfile: Frontend/Dockerfile
-    working_dir: /app
-    command: sh -c "npm start"
-    volumes:
-      - ./Frontend:/app
-    ports:
-      - 3000:3000
-    networks:
-      - frontend
+  # frontend:
+  #   image: 254chege/ezy-frontend
+  #   build:
+  #     context: .
+  #     dockerfile: Frontend/Dockerfile
+  #   working_dir: /app
+  #   command: sh -c "npm start"
+  #   volumes:
+  #     - ./Frontend:/app
+  #   ports:
+  #     - 3000:3000
+  #   networks:
+  #     - frontend

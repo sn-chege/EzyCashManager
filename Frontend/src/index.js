@@ -21,14 +21,14 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import AuthProvider from 'react-auth-kit';
 import createStore from 'react-auth-kit/createStore'; 
+import RequireAuth from '@auth-kit/react-router/RequireAuth'
 
+import AdminLayout from "layouts/Admin.js";
+import AuthLayout from "layouts/Auth.js";
 
 import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
-
-import AdminLayout from "layouts/Admin.js";
-import AuthLayout from "layouts/Auth.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -42,10 +42,14 @@ const store = createStore({
 root.render(
   <AuthProvider store={store}>
     <BrowserRouter>
-        <Routes>
-          <Route path="/admin/*" element={<AdminLayout />} />
+        <Routes>        
           <Route path="/auth/*" element={<AuthLayout />} />
-          <Route path="*" element={<Navigate to="/admin/index" replace />} />
+          <Route path={'/admin/*'} element={
+            <RequireAuth fallbackPath={'/auth/login'}>
+              <AdminLayout/>
+            </RequireAuth>
+          }/>
+          {/* <Route path="*" element={<Navigate to="/admin/index" replace />} /> */}
         </Routes>
     </BrowserRouter>
   </AuthProvider>

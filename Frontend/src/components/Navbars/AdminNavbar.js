@@ -16,6 +16,8 @@
 
 */
 import { Link } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
+import useSignOut from 'react-auth-kit/hooks/useSignOut';
 // reactstrap components
 import {
   DropdownMenu,
@@ -35,6 +37,15 @@ import {
 } from "reactstrap";
 
 const AdminNavbar = (props) => {
+  const navigate = useNavigate();
+  const signOut = useSignOut();
+
+  const handleLogout = () => {
+    console.log("Logging out");
+    signOut();
+    navigate('/auth/login');
+  };
+
   return (
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
@@ -72,9 +83,9 @@ const AdminNavbar = (props) => {
                   <span>My profile</span>
                 </DropdownItem>
                 <DropdownItem divider />
-                <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
+                <DropdownItem href="#pablo" onClick={handleLogout}>
                   <i className="ni ni-user-run" />
-                  <span>Logout</span>
+                  <span>Logouttt</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
